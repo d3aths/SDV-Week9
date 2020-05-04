@@ -40,13 +40,83 @@ function anyFunction(data, callback)
 
     // insert code here
 }
-//this is for when you want a function to start but you dont want it to run just yet
+//this is for when you want a function to start but you dont want it to run just yet (callback)
 
-functionOne(data, function(resultOne){
-    functionTwo(resultOne, function(resultTwo) {
-        functionThree(resultTwo, function(resultThree){
-            //code goes here
-        })
-    })
-})
+// functionOne(data, function(resultOne){
+//     functionTwo(resultOne, function(resultTwo) {
+//         functionThree(resultTwo, function(resultThree){
+//             //code goes here
+//         })
+//     })
+// })
 //i have no idea what this means but ill never use this in my life
+
+const dataArray = []
+function myData(dataFromUser)
+{
+    if (typeof dataFromUser === 'string')
+    {
+        console.log(dataFromUser)
+    } 
+    else if (typeof dataFromUser === "object")
+    {
+        for (let item in dataFromUser)
+        {
+            console.log(item + ":" + dataFromUser[item])
+        }
+    }
+}
+
+const result = function input(dataInput, callback)
+{
+ dataArray.push(dataInput)
+ callback(dataInput)
+}
+//this code is supposed to callback on the previous function somehow and put the data into an arrray
+
+let myObject = {
+    firstName : 'Celeste',
+    lastName : 'Quinn'
+}
+console.log(myObject)
+console.log(myObject.firstName)
+myObject.name = 'Muaz'
+
+console.log(myObject)
+
+//only use letters, digits, underscores
+//must start with a letter or underscore
+//names are case sensitive
+//must not match a reserved keyword in JS
+
+let students = {
+    name: "Luke",
+    class: "SDV",
+    school: "NMIT"
+}
+console.log(Object.keys(students))
+//retrieives the keys related to object in brackets
+
+// Object.freeze(students)
+//freezes the object so you cannot modify or change it
+
+students.name = "Phil"
+
+console.log(students)
+console.log(Object.isFrozen(students))
+
+let studentTwo = {
+    studentName: "Luke",
+    otherClass: "CSA",
+    school: "MIT"
+}
+
+const newObj = Object.assign(students, studentTwo)
+console.log(newObj)
+
+const metaStudent = Object.create(students)
+metaStudent.name = "Ali"
+metaStudent.class = "SDV503"
+metaStudent.school ="NMIT"
+console.log(metaStudent)
+//creates object that inherits keys from another object, students in this case
